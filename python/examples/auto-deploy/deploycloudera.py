@@ -323,6 +323,7 @@ HBASE_GW_CONFIG = { }
 HIVE_SERVICE_NAME = "HIVE"
 HIVE_SERVICE_CONFIG = {
   'hive_metastore_database_host': CM_HOST,
+  'hive_metastore_database_user': 'metastore',
   'hive_metastore_database_name': 'metastore',
   'hive_metastore_database_password': HIVE_METASTORE_PASSWORD,
   'hive_metastore_database_port': 7432,
