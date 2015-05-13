@@ -1,0 +1,13 @@
+# Python bytecode
+*.pyc
+
+# Eclipse files
+.classpath
+.project
+.pydevproject
+
+# Emacs backup files
+*~
+
+# Maven build dir
+target
