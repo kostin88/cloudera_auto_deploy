@@ -137,13 +137,13 @@ AMON_ROLE_CONFIG = {
    'firehose_database_password': FIREHOSE_DATABASE_PASSWORD,
    'firehose_database_type': 'postgresql',
    'firehose_database_name': 'amon',
-   'firehose_heapsize': '215964392',
+   'firehose_heapsize': '1073741824',  #TODO: GB
 }
 APUB_ROLENAME = "ALERTPUBLISHER"
 APUB_ROLE_CONFIG = { }
 ESERV_ROLENAME = "EVENTSERVER"
 ESERV_ROLE_CONFIG = {
-   'event_server_heapsize': '1073741824' #TODO: GB
+   'event_server_heapsize': '215964392'
 }
 HMON_ROLENAME = "HOSTMONITOR"
 HMON_ROLE_CONFIG = { }
@@ -325,15 +325,14 @@ HIVE_SERVICE_CONFIG = {
   'hive_metastore_database_host': CM_HOST,
   'hive_metastore_database_name': 'metastore',
   'hive_metastore_database_password': HIVE_METASTORE_PASSWORD,
-  'hive_metastore_database_port': 3306,
-  'hive_metastore_database_type': 'mysql',
-  'mapreduce_yarn_service': MAPRED_SERVICE_NAME,
+  'hive_metastore_database_port': 7432,
+  'hive_metastore_database_type': 'postgresql',
   'zookeeper_service': ZOOKEEPER_SERVICE_NAME,
   'mapreduce_yarn_service': YARN_SERVICE_NAME,
 }
 HIVE_HMS_HOST = CLUSTER_HOSTS[0]
 HIVE_HMS_CONFIG = {
-  'hive_metastore_java_heapsize': 85306784,
+  'hive_metastore_java_heapsize': 1073741824,
 }
 HIVE_HS2_HOST = CLUSTER_HOSTS[0]
 HIVE_HS2_CONFIG = { }
