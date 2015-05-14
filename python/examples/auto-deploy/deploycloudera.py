@@ -329,8 +329,7 @@ HIVE_SERVICE_CONFIG = {
   'hive_metastore_database_port': 7432,
   'hive_metastore_database_type': 'postgresql',
   'zookeeper_service': ZOOKEEPER_SERVICE_NAME,
-  'mapreduce_yarn_service': YARN_SERVICE_NAME,
-  'hdfs_service': HDFS_SERVICE_NAME
+  'mapreduce_yarn_service': YARN_SERVICE_NAME
 }
 HIVE_HMS_HOST = CLUSTER_HOSTS[0]
 HIVE_HMS_CONFIG = {
