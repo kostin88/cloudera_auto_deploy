@@ -408,7 +408,6 @@ HUE_SERVICE_CONFIG = {
   'hbase_service': HBASE_SERVICE_NAME,
   'impala_service': IMPALA_SERVICE_NAME,
   'oozie_service': OOZIE_SERVICE_NAME,
-  'sqoop_service': SQOOP_SERVICE_NAME,
   'hue_webhdfs': HDFS_SERVICE_NAME + "-" + HDFS_NAMENODE_SERVICE_NAME,
   'hue_hbase_thrift': HBASE_SERVICE_NAME + "-" + HBASE_THRIFTSERVER_SERVICE_NAME,
 }
@@ -1006,9 +1005,9 @@ def main():
    #search_service = deploy_search(CLUSTER, SEARCH_SERVICE_NAME, SEARCH_SERVICE_CONFIG, SEARCH_SOLR_HOST, SEARCH_SOLR_CONFIG, SEARCH_GW_HOSTS, SEARCH_GW_CONFIG)
    #print "Deployed Search service " + SEARCH_SERVICE_NAME + " using SOLRHost " + SEARCH_SOLR_HOST
    
-   flume_service = deploy_flume(CLUSTER, FLUME_SERVICE_NAME, FLUME_SERVICE_CONFIG, FLUME_AGENT_HOSTS, FLUME_AGENT_CONFIG)
-   print "Deployed Flume service " + FLUME_SERVICE_NAME + " using FlumeAgents on "
-   PRETTY_PRINT.pprint(FLUME_AGENT_HOSTS)
+   #flume_service = deploy_flume(CLUSTER, FLUME_SERVICE_NAME, FLUME_SERVICE_CONFIG, FLUME_AGENT_HOSTS, FLUME_AGENT_CONFIG)
+   #print "Deployed Flume service " + FLUME_SERVICE_NAME + " using FlumeAgents on "
+   #PRETTY_PRINT.pprint(FLUME_AGENT_HOSTS)
    
    oozie_service = deploy_oozie(CLUSTER, OOZIE_SERVICE_NAME, OOZIE_SERVICE_CONFIG, OOZIE_SERVER_HOST, OOZIE_SERVER_CONFIG)
    print "Deployed Oozie service " + OOZIE_SERVICE_NAME + " using OozieServer on " + OOZIE_SERVER_HOST
