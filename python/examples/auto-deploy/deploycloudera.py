@@ -1003,8 +1003,8 @@ def main():
    CLUSTER.start().wait()
    print "Done restarting cluster"
 
-   search_service = deploy_search(CLUSTER, SEARCH_SERVICE_NAME, SEARCH_SERVICE_CONFIG, SEARCH_SOLR_HOST, SEARCH_SOLR_CONFIG, SEARCH_GW_HOSTS, SEARCH_GW_CONFIG)
-   print "Deployed Search service " + SEARCH_SERVICE_NAME + " using SOLRHost " + SEARCH_SOLR_HOST
+   #search_service = deploy_search(CLUSTER, SEARCH_SERVICE_NAME, SEARCH_SERVICE_CONFIG, SEARCH_SOLR_HOST, SEARCH_SOLR_CONFIG, SEARCH_GW_HOSTS, SEARCH_GW_CONFIG)
+   #print "Deployed Search service " + SEARCH_SERVICE_NAME + " using SOLRHost " + SEARCH_SOLR_HOST
    
    flume_service = deploy_flume(CLUSTER, FLUME_SERVICE_NAME, FLUME_SERVICE_CONFIG, FLUME_AGENT_HOSTS, FLUME_AGENT_CONFIG)
    print "Deployed Flume service " + FLUME_SERVICE_NAME + " using FlumeAgents on "
@@ -1013,8 +1013,8 @@ def main():
    oozie_service = deploy_oozie(CLUSTER, OOZIE_SERVICE_NAME, OOZIE_SERVICE_CONFIG, OOZIE_SERVER_HOST, OOZIE_SERVER_CONFIG)
    print "Deployed Oozie service " + OOZIE_SERVICE_NAME + " using OozieServer on " + OOZIE_SERVER_HOST
    
-   sqoop_service = deploy_sqoop(CLUSTER, SQOOP_SERVICE_NAME, SQOOP_SERVICE_CONFIG, SQOOP_SERVER_HOST, SQOOP_SERVER_CONFIG)
-   print "Deployed Sqoop service " + SQOOP_SERVICE_NAME + " using SqoopServer on " + SQOOP_SERVER_HOST
+   #sqoop_service = deploy_sqoop(CLUSTER, SQOOP_SERVICE_NAME, SQOOP_SERVICE_CONFIG, SQOOP_SERVER_HOST, SQOOP_SERVER_CONFIG)
+   #print "Deployed Sqoop service " + SQOOP_SERVICE_NAME + " using SqoopServer on " + SQOOP_SERVER_HOST
 
    hive_service = deploy_hive(CLUSTER, HIVE_SERVICE_NAME, HIVE_SERVICE_CONFIG, HIVE_HMS_HOST, HIVE_HMS_CONFIG, HIVE_HS2_HOST, HIVE_HS2_CONFIG, HIVE_WHC_HOST, HIVE_WHC_CONFIG, HIVE_GW_HOSTS, HIVE_GW_CONFIG)
    print "Depoyed Hive service " + HIVE_SERVICE_NAME + " using HiveMetastoreServer on " + HIVE_HMS_HOST + " and HiveServer2 on " + HIVE_HS2_HOST
