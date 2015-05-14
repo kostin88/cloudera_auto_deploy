@@ -408,6 +408,7 @@ HUE_SERVICE_CONFIG = {
   'hbase_service': HBASE_SERVICE_NAME,
   'impala_service': IMPALA_SERVICE_NAME,
   'oozie_service': OOZIE_SERVICE_NAME,
+  'sqoop_service': SQOOP_SERVICE_NAME,
   'hue_webhdfs': HDFS_SERVICE_NAME + "-" + HDFS_NAMENODE_SERVICE_NAME,
   'hue_hbase_thrift': HBASE_SERVICE_NAME + "-" + HBASE_THRIFTSERVER_SERVICE_NAME,
 }
@@ -1012,8 +1013,9 @@ def main():
    oozie_service = deploy_oozie(CLUSTER, OOZIE_SERVICE_NAME, OOZIE_SERVICE_CONFIG, OOZIE_SERVER_HOST, OOZIE_SERVER_CONFIG)
    print "Deployed Oozie service " + OOZIE_SERVICE_NAME + " using OozieServer on " + OOZIE_SERVER_HOST
    
-   #sqoop_service = deploy_sqoop(CLUSTER, SQOOP_SERVICE_NAME, SQOOP_SERVICE_CONFIG, SQOOP_SERVER_HOST, SQOOP_SERVER_CONFIG)
-   #print "Deployed Sqoop service " + SQOOP_SERVICE_NAME + " using SqoopServer on " + SQOOP_SERVER_HOST
+   sqoop_service = deploy_sqoop(CLUSTER, SQOOP_SERVICE_NAME, SQOOP_SERVICE_CONFIG, SQOOP_SERVER_HOST, SQOOP_SERVER_CONFIG)
+   print "Deployed Sqoop service " + SQOOP_SERVICE_NAME + " using SqoopServer on " + SQOOP_SERVER_HOST
+   sqoop_service.upgrade_sqoop_db()
 
    hive_service = deploy_hive(CLUSTER, HIVE_SERVICE_NAME, HIVE_SERVICE_CONFIG, HIVE_HMS_HOST, HIVE_HMS_CONFIG, HIVE_HS2_HOST, HIVE_HS2_CONFIG, HIVE_WHC_HOST, HIVE_WHC_CONFIG, HIVE_GW_HOSTS, HIVE_GW_CONFIG)
    print "Depoyed Hive service " + HIVE_SERVICE_NAME + " using HiveMetastoreServer on " + HIVE_HMS_HOST + " and HiveServer2 on " + HIVE_HS2_HOST
