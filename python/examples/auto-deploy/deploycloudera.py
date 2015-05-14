@@ -1037,6 +1037,11 @@ def main():
    
    post_startup(CLUSTER, hdfs_service, oozie_service)
 
+   print "About to restart cluster."
+   CLUSTER.stop().wait()
+   CLUSTER.start().wait()
+   print "Done restarting cluster."
+
    print "Finished deploying Cloudera cluster. Go to http://" + CM_HOST + ":7180 to administer the cluster."
    print "If the Oozie service (and therefore the HUE service as well, which depends on it) did not start properly, go to the Oozie service, stop it, click on the Actions button and choose 'Create Database', then start it."
    print "If there are any other services not running, restart them now."

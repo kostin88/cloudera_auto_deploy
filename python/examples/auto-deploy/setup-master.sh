@@ -50,6 +50,7 @@ sudo pip install cm_api
 # Set up MySQL
 wget http://archive.cloudera.com/cdh5/cdh/5/hive-1.1.0-cdh5.4.0.tar.gz
 tar zxf hive-1.1.0-cdh5.4.0.tar.gz
+cp ./hive-1.1.0-cdh5.4.0/scripts/metastore/upgrade/mysql/hive-txn-schema-0.13.0.mysql.sql .
 sudo yum -y install mysql-server expect
 sudo service mysqld start
 sudo /sbin/chkconfig mysqld on
@@ -57,11 +58,11 @@ sudo /bin/echo -e "\nY\n$hive_metastore_password\n$hive_metastore_password\nY\nn
 sudo /usr/bin/mysql_secure_installation < /tmp/answers
 sudo rm /tmp/answers
 mysql -uroot -p$hive_metastore_password --execute="CREATE DATABASE metastore; USE metastore; SOURCE ./hive-1.1.0-cdh5.4.0/scripts/metastore/upgrade/mysql/hive-schema-1.1.0.mysql.sql;"
-mysql -uroot -p$hive_metastore_password --execute="CREATE USER 'hive'@'$hive_metastore_host' IDENTIFIED BY '$hive_metastore_password';"
-mysql -uroot -p$hive_metastore_password --execute="REVOKE ALL PRIVILEGES, GRANT OPTION FROM 'hive'@'$hive_metastore_host';"
-mysql -uroot -p$hive_metastore_password --execute="GRANT SELECT,INSERT,UPDATE,DELETE,LOCK TABLES,EXECUTE ON metastore.* TO 'hive'@'$hive_metastore_host';"
+mysql -uroot -p$hive_metastore_password --execute="CREATE USER 'hive'@'%' IDENTIFIED BY '$hive_metastore_password';"
+mysql -uroot -p$hive_metastore_password --execute="REVOKE ALL PRIVILEGES, GRANT OPTION FROM 'hive'@'%';"
+mysql -uroot -p$hive_metastore_password --execute="GRANT SELECT,INSERT,UPDATE,DELETE,LOCK TABLES,EXECUTE,CREATE ON metastore.* TO 'hive'@'%';"
 mysql -uroot -p$hive_metastore_password --execute="FLUSH PRIVILEGES;"
-mysql -uroot -p$hive_metastore_password --execute="create database oozie; grant all privileges on oozie.* to 'oozie'@'localhost' identified by '$hive_metastore_password'; grant all privileges on oozie.* to 'oozie'@'%' identified by '$hive_metastore_password';"
+mysql -uroot -p$hive_metastore_password --execute="create database oozie; grant all privileges on oozie.* to 'oozie'@'%' identified by '$hive_metastore_password'; grant all privileges on oozie.* to 'oozie'@'%' identified by '$hive_metastore_password';"
 
 # Make sure DNS is set up properly so all nodes can find all other nodes
 
