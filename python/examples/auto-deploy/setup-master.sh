@@ -48,15 +48,15 @@ sudo yum -y install python-pip
 sudo pip install cm_api
 
 # Set up MySQL
-wget http://archive.cloudera.com/cdh5/cdh/5/hive-0.12.0-cdh5.0.0.tar.gz
-tar zxf hive-0.12.0-cdh5.0.0.tar.gz
+wget http://archive.cloudera.com/cdh5/cdh/5/hive-1.1.0-cdh5.4.0.tar.gz
+tar zxf hive-1.1.0-cdh5.4.0.tar.gz
 sudo yum -y install mysql-server expect
 sudo service mysqld start
 sudo /sbin/chkconfig mysqld on
 sudo /bin/echo -e "\nY\n$hive_metastore_password\n$hive_metastore_password\nY\nn\nY\nY\n" > /tmp/answers
 sudo /usr/bin/mysql_secure_installation < /tmp/answers
 sudo rm /tmp/answers
-mysql -uroot -p$hive_metastore_password --execute="CREATE DATABASE metastore; USE metastore; SOURCE ./hive-0.12.0-cdh5.0.0/scripts/metastore/upgrade/mysql/hive-schema-0.12.0.mysql.sql;"
+mysql -uroot -p$hive_metastore_password --execute="CREATE DATABASE metastore; USE metastore; SOURCE ./hive-1.1.0-cdh5.4.0/scripts/metastore/upgrade/mysql/hive-schema-1.1.0.mysql.sql;"
 mysql -uroot -p$hive_metastore_password --execute="CREATE USER 'hive'@'$hive_metastore_host' IDENTIFIED BY '$hive_metastore_password';"
 mysql -uroot -p$hive_metastore_password --execute="REVOKE ALL PRIVILEGES, GRANT OPTION FROM 'hive'@'$hive_metastore_host';"
 mysql -uroot -p$hive_metastore_password --execute="GRANT SELECT,INSERT,UPDATE,DELETE,LOCK TABLES,EXECUTE ON metastore.* TO 'hive'@'$hive_metastore_host';"
